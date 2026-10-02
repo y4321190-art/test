@@ -55,40 +55,6 @@ local function loadRemote(url, moduleName)
     end
     return result
 end
-
--- Premium user access bootstrap
--- Services
-local Players = game:GetService("Players")
-local LocalPlayer = Players.LocalPlayer
-
--- Table of authorized usernames (add approved usernames inside the quotes)
-local authorizedUsers = {
-    "xz_yigitwq",
-    "pandikatanvira",
-    
-}
-
--- Function to check if a username is in the authorized list
-local function isAuthorized(name)
-    for _, user in ipairs(authorizedUsers) do
-        if user == name then
-            return true
-        end
-    end
-    return false
-end
-
--- Kick check upon execution
-if not isAuthorized(LocalPlayer.Name) then
-    -- Copy the Discord invite link to their clipboard
-    pcall(function()
-        setclipboard("https://discord.gg/WZGSaWhB8")
-    end)
-    
-    -- Kick the player
-    LocalPlayer:Kick("You do not have permission to this script! Discord invite copied to your clipboard: https://discord.gg/WZGSaWhB8")
-end
-
 local Fluent = loadRemote("https://raw.githubusercontent.com/StyearX/Script/refs/heads/main/Phantomwrym/Fluent-modded/Main.lua", "Fluent/Main.lua")
 local SaveManager = loadRemote("https://raw.githubusercontent.com/StyearX/Script/refs/heads/main/Phantomwrym/Fluent-modded/SaveManager.lua", "Fluent/SaveManager.lua")
 local FBM = loadRemote("https://raw.githubusercontent.com/StyearX/Script/refs/heads/main/Phantomwrym/Fluent-modded/FloatingButtonManager.lua", "Fluent/FloatingButtonManager.lua")
